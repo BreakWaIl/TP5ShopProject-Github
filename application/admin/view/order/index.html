@@ -106,6 +106,25 @@
             },'json')
             return false;
         });
+
+        //ajax查询物流信息
+        //事件委托
+        $('tbody').on('click','.logistics',function(){
+            var company = $(this).attr('company');
+            var number = $(this).attr(number);
+            var param = {"company":company,"number":number};
+            $.get("{:url('admin/order/queryLogistics')}",param,function (text) {
+                // console.log(text);
+                layer.open({
+                    type:2,
+                    title:'物流信息:',
+                    shadeClose:true,
+                    shade:0.8,
+                    area:['650px','550px'],
+                    content:text  //iframe 的 url
+                });
+            },'text');
+        });
     </script>
 </body>
 
