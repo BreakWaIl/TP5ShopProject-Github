@@ -1,0 +1,29 @@
+request body = <TemplateSMS>
+                    <to>17887932352</to> 
+                    <appId>8a216da86010e690016036638281119b</appId>
+                    <templateId>1</templateId>
+                    <datas><data>666</data><data>5</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da86010e690016034c5b116101e/SMS/TemplateSMS?sig=BC464CCEAABEDA9DF28986FD70E98348
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>000000</statusCode>
+    <TemplateSMS>
+        <smsMessageSid>3ce1ff934d1d44feb7340b55d9db7bef</smsMessageSid>
+        <dateCreated>20180616213749</dateCreated>
+    </TemplateSMS>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>17887932352</to> 
+                    <appId>8a216da86010e690016036638281119b</appId>
+                    <templateId>1</templateId>
+                    <datas><data>666</data><data>5</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da86010e690016034c5b116101e/SMS/TemplateSMS?sig=B7A9A829A68AC78AA94BB757A4C7A41F
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>160038</statusCode>
+    <statusMsg>短信验证码发送过频繁</statusMsg>
+</Response>
+
