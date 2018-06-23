@@ -61,8 +61,17 @@ class OrderController extends CommonController
 
     public function index()
     {
+        //接收查询关键字
+        $keyword = trim(input('keyword'));
+        //拼接查询条件
+        $where = '';
+        if($keyword){
+            //使用or连接查询条件 只要满足一个即可
+            $where .="receiver like '%{$keyword}%' or tel like '%{$keyword}%' or order_id like '%{$keyword}%' or address like '%{$keyword}%'";
+        }
         $lists = Order::alias('t1')
             ->field('t1.*,t2.username')
+            ->where($where)
             ->join("sh_member t2",'t1.member_id = t2.member_id','left')
             ->paginate(1);
         //判断是否为ajax请求

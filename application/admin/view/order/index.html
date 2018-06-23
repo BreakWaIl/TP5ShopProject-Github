@@ -52,6 +52,13 @@
                 <li><span><img src="{:config('admin_static')}/images/t04.png" /></span>统计</li>
             </ul>
         </div>
+        <!--搜索开始 Start-->
+        <form method="get" style="margin-bottom: 10px;">
+            输入收货人\电话\订单号\地址:
+            <input placeholder="输入收货人\电话\订单号\地址" class="dfinput" type="text" name="keyword" id="keyword">
+            <input type="button" class="dfinput" style="width:100px;" id="search" value="查询">
+        </form>
+        <!--搜索结束 Stop-->
         <table class="tablelist">
             <thead>
                 <tr>
@@ -97,14 +104,40 @@
         //ajax无刷新分页(使用委托方式绑定单击事件，让后续新来的元素也有单击事件)
         $(".pagination").on('click','a',function(){
             var href = $(this).attr('href');
+            var keyword = $("input[name='keyword']").val();
+            //基于变量的正则只能使用new来创建
+            var reg = new RegExp(keyword,'g');
+            //替换主题和分页页码数据
+            if(keyword){
+                $("tbody").html(json.tbody.replace(reg,"<span style='color: red;font-size: 20px'>"+keyword+""));
+            }else{
+                $("tbody").html(json.tbody);
+            }
             //阻止a标签的默认行为(禁止a标签跳转)
-            $.get(href,'',function(json){
+            $.get(href,{"keyword":keyword},function(json){
                 console.log(json);
                 //把返回的数据，进行替换即可
                 $(".pagination").html(json.pagelist);
                 $("tbody").html(json.tbody);
             },'json')
             return false;
+        });
+
+        //ajax查询
+        $("#search").click(function(){
+            var keyword = $("input[name='keyword']").val();
+            //发送ajax请求
+            $.get("{:url('admin/order/index')}",{"keyword":keyword},function(json){
+                //基于变量的正则只能使用new来创建
+                var reg = new RegExp(keyword,'g');
+                //替换主题和分页页码数据
+                if(keyword){
+                    $("tbody").html(json.tbody.replace(reg,"<span style='color: red;font-size: 20px'>"+keyword+"</span>"));
+                }else{
+                    $("tbody").html(json.tbody);
+                }
+                $("pagination").html(json.pagelist);
+                },'json');
         });
 
         //ajax查询物流信息
