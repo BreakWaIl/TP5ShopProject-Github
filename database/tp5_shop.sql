@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-06-23 18:32:05
+Date: 2018-06-23 20:47:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -75,7 +75,7 @@ CREATE TABLE `sh_auth` (
   `create_time` int(11) DEFAULT '0',
   `update_time` int(11) DEFAULT '0',
   PRIMARY KEY (`auth_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 -- ----------------------------
 -- Records of sh_auth
@@ -87,6 +87,25 @@ INSERT INTO `sh_auth` VALUES ('7', '角色列表', 'role', 'index', '6', '152888
 INSERT INTO `sh_auth` VALUES ('8', '控制账户可用', 'user', 'ajaxchangeactive', '7', '1528886726', '1528886726');
 INSERT INTO `sh_auth` VALUES ('9', '超级管理员', '', '', '0', '1528897081', '1528897081');
 INSERT INTO `sh_auth` VALUES ('10', '管理员添加', 'User', 'add', '9', '1528897170', '1528897170');
+INSERT INTO `sh_auth` VALUES ('11', '商品属性', '', '', '0', '1529755694', '1529755694');
+INSERT INTO `sh_auth` VALUES ('12', '添加商品属性', 'Attribute', 'add', '11', '1529755727', '1529755727');
+INSERT INTO `sh_auth` VALUES ('13', '商品属性列表', 'Attribute', 'index', '11', '1529755746', '1529755746');
+INSERT INTO `sh_auth` VALUES ('15', '用户权限', '', '', '0', '1529755799', '1529755799');
+INSERT INTO `sh_auth` VALUES ('16', '添加用户权限', 'Auth', 'add', '15', '1529755824', '1529755824');
+INSERT INTO `sh_auth` VALUES ('17', '用户权限列表', 'Auth', 'index', '15', '1529755841', '1529755841');
+INSERT INTO `sh_auth` VALUES ('19', '商品类型', '', '', '0', '1529755879', '1529755879');
+INSERT INTO `sh_auth` VALUES ('20', '商品类型添加', 'Category', 'add', '19', '1529755897', '1529755897');
+INSERT INTO `sh_auth` VALUES ('21', '商品类型列表', 'Category', 'index', '19', '1529755912', '1529755912');
+INSERT INTO `sh_auth` VALUES ('23', '商品订单', '', '', '0', '1529755955', '1529755955');
+INSERT INTO `sh_auth` VALUES ('26', '商品订单列表', 'Order', 'index', '23', '1529756028', '1529756028');
+INSERT INTO `sh_auth` VALUES ('27', '添加角色', 'Role', 'add', '7', '1529756115', '1529756115');
+INSERT INTO `sh_auth` VALUES ('29', '商品分类', '', '', '0', '1529756169', '1529756169');
+INSERT INTO `sh_auth` VALUES ('30', '商品分类列表', 'Type', 'index', '29', '1529756186', '1529756186');
+INSERT INTO `sh_auth` VALUES ('31', '添加商品分类', 'Type', 'add', '29', '1529756209', '1529756209');
+INSERT INTO `sh_auth` VALUES ('33', '用户管理', '', '', '0', '1529756299', '1529756299');
+INSERT INTO `sh_auth` VALUES ('34', '添加用户', 'User', 'add', '33', '1529756317', '1529756317');
+INSERT INTO `sh_auth` VALUES ('36', '用户列表', 'User', 'index', '33', '1529756339', '1529756339');
+INSERT INTO `sh_auth` VALUES ('37', '商品列表', 'Goods', 'index', '4', '1529757722', '1529757722');
 
 -- ----------------------------
 -- Table structure for `sh_cart`
@@ -310,7 +329,7 @@ CREATE TABLE `sh_role` (
 -- Records of sh_role
 -- ----------------------------
 INSERT INTO `sh_role` VALUES ('2', '商品添加', '4,5', '1528723302', '1528723302');
-INSERT INTO `sh_role` VALUES ('3', '超级管理员', '9,10', '1528897193', '1528897193');
+INSERT INTO `sh_role` VALUES ('3', '超级管理员', '4,5,6,7,8,9,10,11,12,13,15,16,17,19,20,21,23,26,27,29,30,31,33,34,36,37', '1528897193', '1528897193');
 
 -- ----------------------------
 -- Table structure for `sh_type`
@@ -366,10 +385,11 @@ CREATE TABLE `sh_user` (
   `create_time` int(11) DEFAULT '0',
   `update_time` int(11) DEFAULT '0',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='后台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='后台用户表';
 
 -- ----------------------------
 -- Records of sh_user
 -- ----------------------------
-INSERT INTO `sh_user` VALUES ('1', 'admin', '140817ad5c527811d9befcc9c9cbd514', null, '1', '0', '1528611034', '1528611034');
-INSERT INTO `sh_user` VALUES ('2', 'root', '174eb5fa3f54b7d509bdf519cd7ccf9d', null, '1', '0', '1528611035', '1528611035');
+INSERT INTO `sh_user` VALUES ('1', 'admin', '140817ad5c527811d9befcc9c9cbd514', null, '1', '3', '1528611034', '1528611034');
+INSERT INTO `sh_user` VALUES ('2', 'root', '174eb5fa3f54b7d509bdf519cd7ccf9d', null, '1', '3', '1528611035', '1528611035');
+INSERT INTO `sh_user` VALUES ('3', 'lee', 'a7e3f43ae0e31976e9730176d7f79994', null, '1', '3', '1529755379', '1529755379');
